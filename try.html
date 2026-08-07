@@ -20,7 +20,6 @@
       line-height: 1.6;
     }
 
-  
     .container {
       max-width: 1200px;
       margin: auto;
@@ -44,7 +43,6 @@
       margin: 0 auto 2rem;
     }
 
-   
     .topbar {
       position: fixed;
       top: 0;
@@ -63,7 +61,6 @@
       font-size: 1.4rem;
     }
     
-   
     .dropdown {
       position: relative;
     }
@@ -83,8 +80,8 @@
       top: 100%;
       left: 0;
       background: white;
-      min-width: 200px;
-      max-height: 250px;
+      min-width: 220px;
+      max-height: 350px;
       overflow-y: auto;
       border-radius: 6px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -94,20 +91,60 @@
       display: block;
     }
 
-    .dropdown-content a {
+    .dropdown-content a, 
+    .home-toggle-btn {
       color: #002266;
       padding: 10px;
       display: block;
       text-decoration: none;
       border-bottom: 1px solid #eee;
       text-align: left;
+      width: 100%;
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
-    .dropdown-content a:hover {
+    .dropdown-content a:hover,
+    .home-toggle-btn:hover {
       background: #FFD700;
     }
 
-    
+    /* Nested Home Dropdown Styles */
+    .has-nested {
+      position: relative;
+    }
+
+    .home-toggle-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .home-dropdown-content {
+      display: none;
+      background: #f1f5f9;
+      padding-left: 0.5rem;
+    }
+
+    .home-dropdown-content.show {
+      display: block;
+    }
+
+    .home-dropdown-content a {
+      padding: 8px 12px 8px 20px;
+      font-size: 0.9rem;
+      color: #002266;
+    }
+
+    .home-dropdown-content a:hover {
+      background: #e2e8f0;
+    }
+
     .header {
       height: 450px;
       background: linear-gradient(rgba(0, 34, 102, 0.7), rgba(0, 34, 102, 0.7)), url('/pics/Screenshot_20260806-102356.jpg') center/cover;
@@ -119,8 +156,7 @@
       text-align: center;
       padding-top: 50px;
     }
-    
-   
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -152,7 +188,6 @@
       object-fit: cover;
     }
 
-   
     .video-wrap {
       position: relative;
       padding-bottom: 56.25%;
@@ -167,7 +202,6 @@
       object-fit: cover;
     }
 
-    /* Footer */
     footer {
       background: #002266;
       color: white;
@@ -179,29 +213,47 @@
 <body id="home">
   <div class="topbar">
     <div class="dropdown">
-      <button class="menu-btn" onclick="document.getElementById('dropdownMenu').classList.toggle('show')">=Menu</button>
+      <button class="menu-btn" onclick="toggleMainMenu(event)">=Menu</button>
       <div class="dropdown-content" id="dropdownMenu">
         <a href="secondweb.html" style="background-color: yellow; font-weight: 700;">📖 School Info Page</a>
 
-        <a href="#home">Home</a>
+        <!-- Home item with nested sub-dropdown -->
+        <div class="has-nested">
+          <button class="home-toggle-btn" onclick="toggleHomeSubmenu(event)">
+            <span>🏠 Home</span>
+            <span id="arrowIcon">▼</span>
+          </button>
+          <div class="home-dropdown-content" id="homeSubmenu">
+            <a href="#home">Main Hero Section</a>
+            <a href="#about">About Section</a>
+            <a href="#academics">Academics Section</a>
+            <!-- Add any extra Home sub-contents here -->
+            <a href="#news">News & Events</a>
+            <a href="#videos">Video Highlights</a>
+          </div>
+        </div>
+
         <a href="#about">About SCNHS</a>
         <a href="#academics">Academics</a>
         <a href="#news">News</a>
         <a href="#videos">Videos</a>
         <a href="teacher.html">School Heads</a>
-        <a href="gallery.html">Scool Gallery</a>
+        <a href="gallery.html">School Gallery</a>
       </div>
     </div>
     <div class="logo">SCNHS</div>
   </div>
+
   <div class="header">
     <h1>Santiago City National High School</h1>
     <p>The premier school in the city</p>
   </div>
+
   <div class="container" id="about">
     <h2 class="title">About SCNHS</h2>
     <p class="subtitle">Santiago City National High School is committed to excellence, nurturing values-driven and globally competitive learners.</p>
   </div>
+
   <div class="bg-light">
     <div class="container" id="academics">
       <h2 class="title">Academic Tracks</h2>
@@ -214,6 +266,7 @@
       </div>
     </div>
   </div>
+
   <div class="container" id="news">
     <h2 class="title">Latest News</h2>
     <div class="grid">
@@ -233,6 +286,7 @@
       </div>
     </div>
   </div>
+
   <div class="bg-light">
     <div class="container" id="videos">
       <h2 class="title">Video Highlights</h2>
@@ -249,14 +303,33 @@
       </div>
     </div>
   </div>
+
   <footer>
     <p>© 2026 Santiago City National High School | Santiago City, Isabela, Philippines</p>
     <p style="font-size: 0.85rem; opacity: 0.8;">Contact: info@scnhs.edu | +63 (2) 8426-6001</p>
   </footer>
+
   <script>
+    function toggleMainMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('dropdownMenu');
+      menu.classList.toggle('show');
+    }
+
+    function toggleHomeSubmenu(event) {
+      event.stopPropagation();
+      const submenu = document.getElementById('homeSubmenu');
+      const arrow = document.getElementById('arrowIcon');
+      
+      const isOpen = submenu.classList.toggle('show');
+      arrow.textContent = isOpen ? '▲' : '▼';
+    }
+
     window.onclick = function(e) {
-      if (!e.target.matches('.menu-btn')) {
+      if (!e.target.closest('.dropdown')) {
         document.getElementById('dropdownMenu').classList.remove('show');
+        document.getElementById('homeSubmenu').classList.remove('show');
+        document.getElementById('arrowIcon').textContent = '▼';
       }
     }
   </script>

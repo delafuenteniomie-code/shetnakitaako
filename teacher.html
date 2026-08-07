@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCNHS | Teachers & Administration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    /* Header & Back Button */
+    header {
+      background: #002266;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      position: relative;
+    }
+
+    .back-home {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 12px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    
+
+    /* Container & Headings */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #002266;
+      border-bottom: 2px solid #002266;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding-bottom: 15px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.05rem;
+      color: #002266;
+    }
+
+    .role {
+      color: #e65100;
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    .dept {
+      color: #666;
+      font-size: 0.85rem;
+      margin: 5px 0 0;
+    }
+
+    footer {
+      background: #002266;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER WITH HOME LINK -->
+  <header>
+    <a href="index.html" class="back-home">← Go Back Home</a>
+    <h1>Santiago City National High School</h1>
+    <p>Faculty & School Leadership Directory</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <h2>School Administration</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="Principal">
+        <h3>Dr. Juan Dela Cruz</h3>
+        <p class="role">School Principal IV</p>
+        <p class="dept">Office of the Principal</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Assistant Principal">
+        <h3>Maria Santos</h3>
+        <p class="role">Assistant Principal</p>
+        <p class="dept">Academic Affairs</p>
+      </div>
+    </div>
+
+    <h2>Department Teachers</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1580894732413-a70427753c1a?w=400" alt="Teacher">
+        <h3>Elena Ramos</h3>
+        <p class="role">Master Teacher I</p>
+        <p class="dept">Science Department</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" alt="Teacher">
+        <h3>Grace Reyes</h3>
+        <p class="role">Teacher III</p>
+        <p class="dept">Mathematics Department</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Teacher">
+        <h3>Mark Tan</h3>
+        <p class="role">Teacher II</p>
+        <p class="dept">English Department</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400" alt="Teacher">
+        <h3>Sarah Garcia</h3>
+        <p class="role">Teacher I</p>
+        <p class="dept">HUMSS & Social Sciences</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Santiago City National High School</p>
+  </footer>
+
+</body>
+</html>
