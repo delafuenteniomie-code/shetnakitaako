@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Santiago City National High School</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     html {
@@ -20,7 +22,6 @@
       line-height: 1.6;
     }
 
-  
     .container {
       max-width: 1200px;
       margin: auto;
@@ -44,7 +45,9 @@
       margin: 0 auto 2rem;
     }
 
-   
+    /* ==========================================
+       NAVIGATION & DROPDOWN STYLES (PURE CSS)
+       ========================================== */
     .topbar {
       position: fixed;
       top: 0;
@@ -62,52 +65,126 @@
       font-weight: bold;
       font-size: 1.4rem;
     }
-    
-   
+
     .dropdown {
       position: relative;
     }
 
+    /* Hide functional checkboxes */
+    .dropdown-checkbox,
+    .submenu-checkbox {
+      display: none;
+    }
+
+    /* Main Menu Button */
     .menu-btn {
+      display: inline-block;
       background: transparent;
       color: white;
       border: 1px solid white;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 4px;
       cursor: pointer;
+      font-weight: 600;
+      user-select: none;
+      transition: background 0.2s ease;
     }
 
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Main Dropdown Container */
     .dropdown-content {
       display: none;
       position: absolute;
       top: 100%;
       left: 0;
       background: white;
-      min-width: 200px;
-      max-height: 250px;
+      min-width: 240px;
+      max-height: 420px;
       overflow-y: auto;
       border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .dropdown-content.show {
-      display: block;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-top: 8px;
     }
 
     .dropdown-content a {
       color: #002266;
-      padding: 10px;
+      padding: 12px 16px;
       display: block;
       text-decoration: none;
       border-bottom: 1px solid #eee;
       text-align: left;
+      font-size: 0.95rem;
+      transition: background 0.2s ease;
     }
 
     .dropdown-content a:hover {
       background: #FFD700;
+      color: #000;
     }
 
-    
+    /* Toggle Main Menu */
+    .dropdown-checkbox:checked + .menu-btn + .dropdown-content {
+      display: block;
+    }
+
+    /* Sub-menu Styles */
+    .submenu-container {
+      border-bottom: 1px solid #eee;
+    }
+
+    .submenu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .submenu-header a {
+      flex-grow: 1;
+      border-bottom: none;
+      font-weight: 600;
+    }
+
+    .submenu-toggle-btn {
+      color: #002266;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .submenu-content {
+      display: none;
+      background: #f1f5f9;
+    }
+
+    .submenu-content a {
+      padding-left: 28px;
+      font-size: 0.88rem;
+      color: #444;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .submenu-content a:hover {
+      background: #e2e8f0;
+      color: #002266;
+    }
+
+    /* Toggle Home Sub-menu */
+    .submenu-checkbox:checked ~ .submenu-content {
+      display: block;
+    }
+
+    .submenu-checkbox:checked ~ .submenu-header .submenu-toggle-btn {
+      transform: rotate(180deg);
+    }
+
+    /* ==========================================
+       PAGE CONTENT STYLES
+       ========================================== */
     .header {
       height: 450px;
       background: linear-gradient(rgba(0, 34, 102, 0.7), rgba(0, 34, 102, 0.7)), url('/pics/Screenshot_20260806-102356.jpg') center/cover;
@@ -119,8 +196,7 @@
       text-align: center;
       padding-top: 50px;
     }
-    
-   
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -152,7 +228,6 @@
       object-fit: cover;
     }
 
-   
     .video-wrap {
       position: relative;
       padding-bottom: 56.25%;
@@ -167,73 +242,93 @@
       object-fit: cover;
     }
 
-    /* Footer */
     footer {
       background: #002266;
       color: white;
       text-align: center;
       padding: 2rem;
-
     }
   </style>
 </head>
 <body id="home">
+
+  <!-- Fixed Top Navigation -->
   <div class="topbar">
     <div class="dropdown">
-      <button class="menu-btn" onclick="document.getElementById('dropdownMenu').classList.toggle('show')">=Menu</button>
-      <div class="dropdown-content" id="dropdownMenu">
-        <a href="secondweb.html" style="background-color: yellow; font-weight: 700;">📖 School Info Page</a>
+      
+      <!-- Main Menu Checkbox Toggle -->
+      <input type="checkbox" id="menu-toggle" class="dropdown-checkbox">
+      <label for="menu-toggle" class="menu-btn">☰ Menu</label>
+      
+      <!-- Dropdown Content Box -->
+      <div class="dropdown-content">
+        <a href="secondweb.html" style="background-color: #FFD700; font-weight: bold;">📖 School Info Page</a>
+        
+        <!-- Parent "Home" Menu with Nested Sub-menu -->
+        <div class="submenu-container">
+          <input type="checkbox" id="home-sub-toggle" class="submenu-checkbox">
+          
+          <div class="submenu-header">
+            <a href="#home">Home</a>
+            <label for="home-sub-toggle" class="submenu-toggle-btn">▼</label>
+          </div>
+          
+          <!-- Custom Home Sub-menu Contents -->
+          <div class="submenu-content">
+            <a href="#principal">↳ Principal's Message</a>
+            <a href="#mission">↳ Mission & Vision</a>
+            <a href="#history">↳ School History</a>
+            <a href="#campus-map">↳ Campus Map</a>
+            <a href="#handbook">↳ Student Handbook</a>
+          </div>
+        </div>
 
-        <a href="#home">Home</a>
+        <!-- Main Menu Section Links -->
         <a href="#about">About SCNHS</a>
-        <a href="#academics">Academics</a>
         <a href="#news">News</a>
         <a href="#videos">Videos</a>
         <a href="teacher.html">School Heads</a>
-        <a href="gallery.html">Scool Gallery</a>
+        <a href="gallery.html">School Gallery</a>
       </div>
+
     </div>
     <div class="logo">SCNHS</div>
   </div>
+
+  <!-- Hero Header -->
   <div class="header">
     <h1>Santiago City National High School</h1>
     <p>The premier school in the city</p>
   </div>
+
+  <!-- About Section -->
   <div class="container" id="about">
     <h2 class="title">About SCNHS</h2>
     <p class="subtitle">Santiago City National High School is committed to excellence, nurturing values-driven and globally competitive learners.</p>
   </div>
-  <div class="bg-light">
-    <div class="container" id="academics">
-      <h2 class="title">Academic Tracks</h2>
-      <p class="subtitle">Explore our secondary academic tracks and offerings.</p>
-      <div class="grid">
-        <div class="card card-body"><h3 class="card-title">STEM</h3><p>Science, Technology, Engineering, and Math.</p></div>
-        <div class="card card-body"><h3 class="card-title">ABM</h3><p>Accountancy, Business, and Management.</p></div>
-        <div class="card card-body"><h3 class="card-title">HUMSS</h3><p>Humanities and Social Sciences.</p></div>
-        <div class="card card-body"><h3 class="card-title">TVL</h3><p>Technical-Vocational-Livelihood track.</p></div>
-      </div>
-    </div>
-  </div>
+
+  <!-- News Section -->
   <div class="container" id="news">
     <h2 class="title">Latest News</h2>
     <div class="grid">
       <div class="card">
-        <img src="/pics/1785981508730.jpg" alt="News Image">
+        <img src="/pics/1785981508730.jpg" alt="Eye Checkup Event">
         <div class="card-body">
           <h3 class="card-title">Conducting a Free Eye Check Up</h3>
           <p>Nag-organisa ng libreng konsultasyon sa mata at libreng salamin ang mga doktor mula sa Integrated Philippine Association of Optometrists (IPAO) Isabela Chapter para sa mga piling mag-aaral ng Grade 7 sa Santiago City National High School ngayong araw bilang pagdiriwang ng Sight Saving Month.</p>
         </div>
       </div>
       <div class="card">
-        <img src="/pics/1785981689373.jpg" alt="News Image">
+        <img src="/pics/1785981689373.jpg" alt="Campus Improvements">
         <div class="card-body">
-          <div class="card-title">Campus Improvements</div>
+          <h3 class="card-title">Campus Improvements</h3>
           <p>New modern facilities and learning spaces opened for SCNHSians.</p>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Video Section -->
   <div class="bg-light">
     <div class="container" id="videos">
       <h2 class="title">Video Highlights</h2>
@@ -250,16 +345,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
   <footer>
     <p>© 2026 Santiago City National High School | Santiago City, Isabela, Philippines</p>
     <p style="font-size: 0.85rem; opacity: 0.8;">Contact: info@scnhs.edu | +63 (2) 8426-6001</p>
   </footer>
-  <script>
-    window.onclick = function(e) {
-      if (!e.target.matches('.menu-btn')) {
-        document.getElementById('dropdownMenu').classList.remove('show');
-      }
-    }
-  </script>
+
 </body>
 </html>
