@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Santiago City National High School</title>
   <style>
+    /* Reset & Base Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     html {
@@ -20,6 +23,7 @@
       line-height: 1.6;
     }
 
+    /* Layout & Containers */
     .container {
       max-width: 1200px;
       margin: auto;
@@ -43,120 +47,6 @@
       margin: 0 auto 2rem;
     }
 
-    .topbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      background: #002266;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .logo {
-      color: white;
-      font-weight: bold;
-      font-size: 1.4rem;
-    }
-    
-    .dropdown {
-      position: relative;
-    }
-
-    .menu-btn {
-      background: transparent;
-      color: white;
-      border: 1px solid white;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: white;
-      min-width: 220px;
-      max-height: 350px;
-      overflow-y: auto;
-      border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .dropdown-content.show {
-      display: block;
-    }
-
-    .dropdown-content a, 
-    .home-toggle-btn {
-      color: #002266;
-      padding: 10px;
-      display: block;
-      text-decoration: none;
-      border-bottom: 1px solid #eee;
-      text-align: left;
-      width: 100%;
-      background: none;
-      border-left: none;
-      border-right: none;
-      border-top: none;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .dropdown-content a:hover,
-    .home-toggle-btn:hover {
-      background: #FFD700;
-    }
-
-    /* Nested Home Dropdown Styles */
-    .has-nested {
-      position: relative;
-    }
-
-    .home-toggle-btn {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-    }
-
-    .home-dropdown-content {
-      display: none;
-      background: #f1f5f9;
-      padding-left: 0.5rem;
-    }
-
-    .home-dropdown-content.show {
-      display: block;
-    }
-
-    .home-dropdown-content a {
-      padding: 8px 12px 8px 20px;
-      font-size: 0.9rem;
-      color: #002266;
-    }
-
-    .home-dropdown-content a:hover {
-      background: #e2e8f0;
-    }
-
-    .header {
-      height: 450px;
-      background: linear-gradient(rgba(0, 34, 102, 0.7), rgba(0, 34, 102, 0.7)), url('/pics/Screenshot_20260806-102356.jpg') center/cover;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding-top: 50px;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -164,8 +54,9 @@
       text-align: left;
     }
 
+    /* Cards & Media */
     .card {
-      background: white;
+      background: #ffffff;
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -177,12 +68,8 @@
       padding: 1.2rem;
     }
 
-    .card-title {
-      color: #002266;
-      margin-bottom: 0.5rem;
-    }
-
-    .card img {
+    .card img, 
+    .video-wrap video {
       width: 100%;
       height: 180px;
       object-fit: cover;
@@ -196,97 +83,254 @@
 
     .video-wrap video {
       position: absolute;
-      width: 100%;
       height: 100%;
       border: 0;
-      object-fit: cover;
     }
 
+    /* Top Navigation Bar */
+    .topbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: #002266;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      color: #ffffff;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    /* Hide pure CSS checkboxes */
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .menu-btn {
+      border: 1px solid #ffffff;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .menu-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Dropdown Menu Box */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      min-width: 240px;
+      max-height: 420px;
+      overflow-y: auto;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      margin-top: 8px;
+    }
+
+    .dropdown-content a {
+      color: #002266;
+      padding: 12px 16px;
+      display: block;
+      text-decoration: none;
+      border-bottom: 1px solid #eeeeee;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-content a:hover, 
+    .highlight {
+      background: #ffd700;
+      color: #000000;
+      font-weight: bold;
+    }
+
+    /* Submenu Accordion */
+    .submenu-container {
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .submenu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .submenu-header a {
+      font-weight: 600;
+      border: 0;
+      flex-grow: 1;
+    }
+
+    .submenu-toggle-btn {
+      color: #002266;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+      user-select: none;
+    }
+
+    .submenu-content {
+      display: none;
+      background: #f1f5f9;
+    }
+
+    .submenu-content a {
+      padding-left: 28px;
+      font-size: 0.88rem;
+      color: #444444;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* Pure CSS Checkbox Logic */
+    #menu-toggle:checked ~ .dropdown-content,
+    #gallery-sub-toggle:checked ~ .submenu-content {
+      display: block;
+    }
+
+    #gallery-sub-toggle:checked ~ .submenu-header .submenu-toggle-btn {
+      transform: rotate(180deg);
+    }
+
+    /* Hero Header Section */
+    .header {
+      height: 450px;
+      /* Soft white-to-light-blue gradient overlay matching the photo's sky and natural tones, creating a seamless, realistic blend */
+      background: 
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(240, 244, 248, 0.75) 100%), 
+        url('/pics/Screenshot_20260811-110723.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+
+    .header-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 34, 102, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      max-width: 750px;
+    }
+
+    .header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #002266;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    .header p {
+      font-size: 1.15rem;
+      color: #2b4c7e;
+      font-weight: 500;
+    }
+
+    /* Footer */
     footer {
       background: #002266;
-      color: white;
+      color: #ffffff;
       text-align: center;
       padding: 2rem;
     }
   </style>
 </head>
 <body id="home">
+
+  <!-- Fixed Top Navigation -->
   <div class="topbar">
     <div class="dropdown">
-      <button class="menu-btn" onclick="toggleMainMenu(event)">=Menu</button>
-      <div class="dropdown-content" id="dropdownMenu">
-        <a href="secondweb.html" style="background-color: yellow; font-weight: 700;">📖 School Info Page</a>
-
-        <!-- Home item with nested sub-dropdown -->
-        <div class="has-nested">
-          <button class="home-toggle-btn" onclick="toggleHomeSubmenu(event)">
-            <span>🏠 Home</span>
-            <span id="arrowIcon">▼</span>
-          </button>
-          <div class="home-dropdown-content" id="homeSubmenu">
-            <a href="#home">Main Hero Section</a>
-            <a href="#about">About Section</a>
-            <a href="#academics">Academics Section</a>
-            <!-- Add any extra Home sub-contents here -->
-            <a href="#news">News & Events</a>
-            <a href="#videos">Video Highlights</a>
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-btn">☰ Menu</label>
+      
+      <div class="dropdown-content">
+        <a href="secweb.html" class="highlight">📖 School Info Page</a>
+        <a href="#home">Home</a>
+        <a href="#about">About SCNHS</a>
+        <a href="#news">News</a>
+        <a href="#videos">Videos</a>
+        <a href="tc.html">School Heads</a>
+        
+        <!-- School Gallery Submenu -->
+        <div class="submenu-container">
+          <input type="checkbox" id="gallery-sub-toggle">
+          
+          <div class="submenu-header">
+            <a href="gallery.html">School Gallery</a>
+            <label for="gallery-sub-toggle" class="submenu-toggle-btn">▼</label>
+          </div>
+          
+          <div class="submenu-content">
+            <a href="#principal">↳ Principal's Message</a>
+            <a href="#mission">↳ Mission & Vision</a>
+            <a href="#history">↳ School History</a>
+            <a href="#campus-map">↳ Campus Map</a>
+            <a href="#handbook">↳ Student Handbook</a>
           </div>
         </div>
 
-        <a href="#about">About SCNHS</a>
-        <a href="#academics">Academics</a>
-        <a href="#news">News</a>
-        <a href="#videos">Videos</a>
-        <a href="teacher.html">School Heads</a>
-        <a href="gallery.html">School Gallery</a>
       </div>
     </div>
     <div class="logo">SCNHS</div>
   </div>
 
+  <!-- Hero Header -->
   <div class="header">
-    <h1>Santiago City National High School</h1>
-    <p>The premier school in the city</p>
+    <div class="header-card">
+      <h1>Santiago City National High School</h1>
+      <p>The premier school in the city</p>
+    </div>
   </div>
 
+  <!-- About Section -->
   <div class="container" id="about">
     <h2 class="title">About SCNHS</h2>
     <p class="subtitle">Santiago City National High School is committed to excellence, nurturing values-driven and globally competitive learners.</p>
   </div>
 
-  <div class="bg-light">
-    <div class="container" id="academics">
-      <h2 class="title">Academic Tracks</h2>
-      <p class="subtitle">Explore our secondary academic tracks and offerings.</p>
-      <div class="grid">
-        <div class="card card-body"><h3 class="card-title">STEM</h3><p>Science, Technology, Engineering, and Math.</p></div>
-        <div class="card card-body"><h3 class="card-title">ABM</h3><p>Accountancy, Business, and Management.</p></div>
-        <div class="card card-body"><h3 class="card-title">HUMSS</h3><p>Humanities and Social Sciences.</p></div>
-        <div class="card card-body"><h3 class="card-title">TVL</h3><p>Technical-Vocational-Livelihood track.</p></div>
-      </div>
-    </div>
-  </div>
-
+  <!-- News Section -->
   <div class="container" id="news">
     <h2 class="title">Latest News</h2>
     <div class="grid">
       <div class="card">
-        <img src="/pics/1785981508730.jpg" alt="News Image">
+        <img src="/pics/1785981508730.jpg" alt="Eye Checkup Event">
         <div class="card-body">
-          <h3 class="card-title">Conducting a Free Eye Check Up</h3>
-          <p>Nag-organisa ng libreng konsultasyon sa mata at libreng salamin ang mga doktor mula sa Integrated Philippine Association of Optometrists (IPAO) Isabela Chapter para sa mga piling mag-aaral ng Grade 7 sa Santiago City National High School ngayong araw bilang pagdiriwang ng Sight Saving Month.</p>
+          <h3>Conducting a Free Eye Check Up</h3>
+          <p>Nag-organisa ng libreng konsultasyon sa mata at libreng salamin ang mga doktor mula sa IPAO Isabela Chapter para sa mga piling mag-aaral ng Grade 7 ngayong araw.</p>
         </div>
       </div>
       <div class="card">
-        <img src="/pics/1785981689373.jpg" alt="News Image">
+        <img src="/pics/1785981689373.jpg" alt="Campus Improvements">
         <div class="card-body">
-          <div class="card-title">Campus Improvements</div>
+          <h3>Campus Improvements</h3>
           <p>New modern facilities and learning spaces opened for SCNHSians.</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Video Section -->
   <div class="bg-light">
     <div class="container" id="videos">
       <h2 class="title">Video Highlights</h2>
@@ -296,42 +340,19 @@
             <video src="/pics/AQMG-eomBQbj_XGOmgJvzg0NEzVLEVr_joWyQGLAXVXwtuLN13lvtNyCI3iWYOCyGFJUApKc5mE8XbvsyBvvjhBqlSnFz4TwEDRgAA-kxg.mp4" controls></video>
           </div>
           <div class="card-body">
-            <h3 class="card-title">Celebrating National Disaster Resilience</h3>
-            <p>Disasters may be unpredictable, but preparedness is our greatest strength. Through this Videokasiya, we promote disaster awareness, preparedness, and resilience to help build a safer and stronger community.</p>
+            <h3>Celebrating National Disaster Resilience</h3>
+            <p>Through this Videokasiya, we promote disaster awareness, preparedness, and resilience to help build a safer community.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>© 2026 Santiago City National High School | Santiago City, Isabela, Philippines</p>
     <p style="font-size: 0.85rem; opacity: 0.8;">Contact: info@scnhs.edu | +63 (2) 8426-6001</p>
   </footer>
 
-  <script>
-    function toggleMainMenu(event) {
-      event.stopPropagation();
-      const menu = document.getElementById('dropdownMenu');
-      menu.classList.toggle('show');
-    }
-
-    function toggleHomeSubmenu(event) {
-      event.stopPropagation();
-      const submenu = document.getElementById('homeSubmenu');
-      const arrow = document.getElementById('arrowIcon');
-      
-      const isOpen = submenu.classList.toggle('show');
-      arrow.textContent = isOpen ? '▲' : '▼';
-    }
-
-    window.onclick = function(e) {
-      if (!e.target.closest('.dropdown')) {
-        document.getElementById('dropdownMenu').classList.remove('show');
-        document.getElementById('homeSubmenu').classList.remove('show');
-        document.getElementById('arrowIcon').textContent = '▼';
-      }
-    }
-  </script>
 </body>
 </html>
